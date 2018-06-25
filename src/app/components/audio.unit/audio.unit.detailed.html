@@ -1,0 +1,34 @@
+<div class="date-time">
+  <span class="time">{{getTime(audioItemPlaying.createdtime)}}
+    <span class="meridiem">{{getMeridiem(audioItemPlaying.createdtime)}}</span>
+  </span>
+  <span class="date">{{getDate(audioItemPlaying.createdtime)}}</span>
+</div>
+
+<div class="close" (click)="close($event)">
+  <mat-icon>close</mat-icon>
+</div>
+
+<div #audioList class="list hidden">
+  <audio-list [items]="audioListItems" (selectAudioItem)="onSelectAudioItem($event)"></audio-list>
+</div>
+
+<div
+#playbackControls
+class="playback-controls"
+[@playbackState]="state"
+(@playbackState.start)="onStartAnimation($event)"
+(@playbackState.done)="onDoneAnimation($event)">
+  <mat-icon #btnPrevious class="previous" (click)="goToPrevious($event)">skip_previous</mat-icon>
+  <mat-icon *ngIf="!isPlaying; else pauseTemplate" class="play-pause" (click)="play($event)">play_circle_outline</mat-icon>
+  <ng-template #pauseTemplate>
+    <!--<mat-icon class="play-pause" (click)="stop($event)">pause_circle_outline</mat-icon>-->
+    <mat-icon *ngIf="!isPlaying || isSuspended" (click)="onClickPlay($event)">play_circle_outline</mat-icon>
+    <mat-icon *ngIf="isPlaying && !isSuspended" (click)="onClickPause($event)">pause_circle_outline</mat-icon>
+    <mat-icon *ngIf="isPlaying || isSuspended" class="stop" (click)="onClickStop($event)">stop</mat-icon>
+  </ng-template>
+  <mat-icon #btnNext class="next" (click)="goToNext($event)">skip_next</mat-icon>
+  <div #slider class="slider">
+    <div #head class="head"></div>
+  </div>
+</div>

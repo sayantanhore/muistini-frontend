@@ -1,0 +1,29 @@
+<!--<section transcription>
+  <span>{{audioItem.transcription}}</span>
+</section>
+<section time>
+  <span class="timestamp">{{getFormattedTimestamp(audioItem.createdtime)}}</span>
+  <span class="descriptor">--</span>
+  <span class="timestamp">{{getFormattedTimestamp(audioItem.endtime)}}</span>
+</section>
+<section controls>
+  <mat-icon *ngIf="!isPlaying; else pauseTemplate" (click)="handleClick()">play_circle_outline</mat-icon>
+  <ng-template #pauseTemplate>
+    <mat-icon (click)="stop()">pause_circle_outline</mat-icon>
+  </ng-template>
+  <audio-progress [duration]="audioItem.duration" [step]="count"></audio-progress>
+</section>-->
+
+<div class="date-time">
+  <span><span class="bold">from : </span>{{timeService.getReadableTimeShort(audioItem.createdtime)}}</span>
+  <span><span class="bold">to : </span>{{timeService.getReadableTimeShort(audioItem.endtime)}}</span>
+</div>
+<div class="audio">
+  <mat-icon *ngIf="!isPlaying || isSuspended" (click)="onClickPlay($event)">play_circle_outline</mat-icon>
+  <mat-icon *ngIf="isPlaying && !isSuspended" (click)="onClickPause($event)">pause_circle_outline</mat-icon>
+  <mat-icon *ngIf="isPlaying || isSuspended" class="stop" (click)="onClickStop($event)">stop</mat-icon>
+  <!--<audio-progress [duration]="audioItem.duration" [step]="count"></audio-progress>-->
+  <div #slider class="slider">
+    <div #head class="head"></div>
+  </div>
+</div>

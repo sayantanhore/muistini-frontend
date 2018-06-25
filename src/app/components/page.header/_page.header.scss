@@ -1,0 +1,107 @@
+$section-height: 56px;
+
+page-header {
+  display: block;
+  box-shadow: 0 3px 10px -1px rgba(0, 0, 0, 0.14);
+  height: $section-height;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+
+  @media (max-width: 699px) {
+    height: $section-height * 3;
+    flex-wrap: wrap;
+  }
+  & > div {
+
+    height: $section-height;
+  }
+  div.input-section--location {
+    padding: 0 16px;
+    flex-basis: 33.3%;
+    @media (max-width: 699px) {
+      flex-basis: 100%;
+    }
+  }
+  div.input-section--date {
+    padding: 0 16px 0 0;
+    flex-basis: 66.6%;
+    @media (max-width: 699px) {
+      padding: 0 16px;
+      flex-basis: 100%;
+      height: $section-height * 2;
+    }
+    form {
+      width: inherit;
+      height: 100%;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      @media (max-width: 699px) {
+        flex-flow: column nowrap;
+      }
+
+      & > div {
+        flex: 0 0 calc(50% - 8px);
+        @media (max-width: 699px) {
+          height: 50%;
+        }
+        .mat-form-field {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+/*
+page-header {
+  display: block;
+  height: $section-height;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  @media (max-width: 699px) {
+    height: $section-height * 3;
+    flex-wrap: wrap;
+  }
+  justify-content: space-between;
+  align-items: stretch;
+
+  box-shadow: 0 3px 10px -1px rgba(0, 0, 0, 0.14);
+
+  & > div {
+    height: $section-height;
+    padding: 0 16px;
+    flex-basis: 33.3%;
+    @media (max-width: 699px) {
+      flex-basis: 100%;
+    }
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    .mat-form-field {
+      flex-basis: 100%;
+    }
+  }
+
+  div.input-section--location {
+
+    border-right: 1px solid;
+    @media (max-width: 699px) {
+      border-bottom: 1px solid;
+      border-right: 0;
+    }
+  }
+
+  div.input-section--date {
+    mat-form-field input[type="date"] {
+      margin-bottom: -5.5px; // Hard fix, not recommended
+    }
+  }
+}
+*/

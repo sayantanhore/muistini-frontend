@@ -1,0 +1,21 @@
+<form [formGroup]="mapFormGroup">
+  <mat-form-field>
+    <input
+    #inputLocation
+    type="text"
+    matInput
+    placeholder="Location"
+    (focus)="selectText($event)"
+    (keypress)="handleKeyPress($event)"
+    [formControl]="mapFormGroup.controls['address']"
+    (ngModelChange)="retrieveGeocode($event)">
+  </mat-form-field>
+</form>
+<div *ngIf="isMapOpen" (click)="$event.stopPropagation()">
+  <agm-map
+  [latitude]="lat"
+  [longitude]="lng"
+  (mapClick)="retrieveAddress($event)">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  </agm-map>
+</div>

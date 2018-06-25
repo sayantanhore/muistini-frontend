@@ -1,0 +1,114 @@
+@mixin set-icon-dim ($icon-dim) {
+  font-size: $icon-dim;
+  line-height: $icon-dim;
+  width: $icon-dim;
+  height: $icon-dim;
+}
+
+image-unit-detailed {
+  position: relative;
+  margin: -24px;
+  width: calc(100% + 48px);
+  height: calc(100% + 48px);
+  display: block;
+  overflow: hidden;
+  /*
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  */
+
+  div.current-image {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    & > img {
+      max-width: 100%;
+      max-height: 100%;
+      flex: 1 1 10%;
+    }
+  }
+
+  div.playback-controls {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    .mat-icon {
+      color: #6362CE;
+      cursor: pointer;
+      &.activated {
+        opacity: 0.4;
+      }
+    }
+    .mat-icon.previous, .mat-icon.next {
+      @include set-icon-dim(56px);
+    }
+    &.navigating .mat-icon.previous,
+    &.navigating .mat-icon.next {
+      @include set-icon-dim(32px);
+    }
+  }
+
+  div.list {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 70%;
+    bottom: 0;
+    box-sizing: border-box;
+    overflow-y: auto;
+    &.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  div.date-time {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-end;
+    span.time {
+      font-size: 32px;
+      line-height: 36px;
+      color: rgba(0, 0, 0, 0.54);
+    }
+    span.meridiem {
+      font-size: 16px;
+      line-height: 20px;
+      text-transform: uppercase;
+    }
+    span.date {
+      font-size: 12px;
+      line-height: 16px;
+      color: rgba(0, 0, 0, 0.32);
+    }
+  }
+
+  div.close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    cursor: pointer;
+    &:hover .mat-icon {
+      color: red;
+    }
+  }
+}

@@ -1,0 +1,3 @@
+<div *ngFor="let imageItem of items, index as i">
+  <img (click)="selectImage($event, i)" #image />
+</div>

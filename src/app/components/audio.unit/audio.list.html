@@ -1,0 +1,8 @@
+<div
+#audioItem
+*ngFor="let item of items; index as i"
+(click)="selectItem($event, item, i)">
+  <mat-icon>audiotrack</mat-icon>
+  <span class="time">{{getTime(item.createdtime)}}</span>
+  <span class="date">{{getDate(item.createdtime)}}</span>
+</div>

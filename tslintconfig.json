@@ -1,0 +1,7 @@
+{
+  "extends": "tslint-config-airbnb",
+  "rules": {
+    "trailing-comma": [false, { "multiline": "never", "singleline": "never" }],
+    "brace-style": [true, "stroustrup", { "allowSingleLine": true } ]
+  }
+}

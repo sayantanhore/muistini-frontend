@@ -1,0 +1,28 @@
+<!-- <ng-container *ngFor="let item of audioList">
+  <div>
+    <audio-unit [audioItem]="item" (audioPlay)="play($event)"></audio-unit>
+  </div>
+</ng-container>
+
+<ng-container *ngFor="let item of imageList">
+  <div>
+    <image-unit [imageItem]="item"></image-unit>
+  </div>
+</ng-container>
+-->
+
+<ng-container *ngFor="let date of getDistinctTimestampsSorted(groupByDate)">
+  <section>
+    <div class="date">{{timeService.getReadableDate(date)}}</div>
+    <div class="content">
+      <ng-container *ngFor="let item of groupByDate[date]">
+        <div *ngIf="item.format_name === 'mpeg'">
+          <audio-unit [audioItem]="item" (audioPlay)="play($event)"></audio-unit>
+        </div>
+        <div *ngIf="item.format_name !== 'mpeg'">
+          <image-unit [imageItem]="item"></image-unit>
+        </div>
+      </ng-container>
+    </div>
+  </section>
+</ng-container>

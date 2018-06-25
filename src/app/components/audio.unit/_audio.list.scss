@@ -1,0 +1,45 @@
+$border-colour: rgba(0, 0, 0, 0.32);
+$list-separator-colour: rgba(0, 0, 0, 0.12);
+$list-item-selected-colour: $border-colour;
+
+audio-list {
+  display: block;
+  box-sizing: border-box;
+  border-top: 1px solid $border-colour;
+  //border-bottom: 1px solid $border-color;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  overflow-y: scroll;
+
+  & > div {
+    flex: 0 0 48px;
+    box-sizing: border-box;
+    border-bottom: 1px solid $list-separator-colour;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 16px;
+    cursor: pointer;
+    &.selected {
+      background-color: #E0E0E0;
+    }
+    &:hover {
+      background-color: #EEEEEE;
+    }
+  }
+  .mat-icon, span {
+    margin-right: 16px;
+    color: rgba(0, 0, 0, 0.54);
+  }
+  span.time {
+    font-size: 14px;
+  }
+  span.date {
+    font-size: 12px;
+  }
+}

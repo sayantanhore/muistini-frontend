@@ -1,0 +1,8 @@
+<div>
+  <page-header
+  (mapEnter)="onMapEnter($event)"
+  (startDateEnter)="onStartDateEnter($event)"
+  (endDateEnter)="onEndDateEnter($event)"></page-header>
+  <page-content [audioList]="audioList" [imageList]="imageList"></page-content>
+  <page-footer></page-footer>
+</div>

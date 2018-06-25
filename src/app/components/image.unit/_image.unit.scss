@@ -1,0 +1,50 @@
+@import 'app/common';
+
+image-unit {
+  display: block;
+  //border: 1px solid red;
+  flex: 1 1 100%;
+  height: 100%;
+  box-shadow: 0 3px 10px -1px rgba(0, 0, 0, 0.14);
+  &:hover {
+    box-shadow: 0 3px 40px -1px rgba(0, 0, 0, 0.24);
+    cursor: pointer;
+  }
+  & > div {
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    position: relative;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+    div.metadata {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 40px;
+      box-sizing: border-box;
+      padding: 16px;
+      background-color: rgba(136, 135, 243, 0.96);
+
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+      align-items: center;
+      & > span {
+        margin-right: 1px;
+      }
+      span.descriptor {
+        @extend .mat-caption;
+        color: #FFF;
+      }
+      span.timestamp {
+        @extend .mat-caption;
+        font-size: 10px;
+        color: #FFF;
+      }
+    }
+  }
+}

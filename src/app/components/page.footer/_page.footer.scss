@@ -1,0 +1,15 @@
+$section-height: 48px;
+
+page-footer {
+  display: block;
+  height: $section-height;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  justify-content: space-between;
+  align-items: stretch;
+
+  box-shadow: 3px 0 10px -1px rgba(0, 0, 0, 0.14);
+}

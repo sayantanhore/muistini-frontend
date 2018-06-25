@@ -1,0 +1,129 @@
+@mixin set-icon-dim ($icon-dim) {
+  font-size: $icon-dim;
+  line-height: $icon-dim;
+  width: $icon-dim;
+  height: $icon-dim;
+}
+
+audio-unit-detailed {
+  position: relative;
+  display: block;
+  margin: -24px;
+  width: calc(100% + 48px);
+  height: calc(100% + 48px);
+
+  div.date-time {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-end;
+    span.time {
+      font-size: 32px;
+      line-height: 36px;
+      color: rgba(0, 0, 0, 0.54);
+    }
+    span.meridiem {
+      font-size: 16px;
+      line-height: 20px;
+      text-transform: uppercase;
+    }
+    span.date {
+      font-size: 12px;
+      line-height: 16px;
+      color: rgba(0, 0, 0, 0.32);
+    }
+  }
+
+  div.close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    cursor: pointer;
+    &:hover .mat-icon {
+      color: red;
+    }
+  }
+
+  div.playback-controls {
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    transition: top 0.2s;
+    &.navigating {
+      //width: 50%;
+      //left: 50%;
+      //top: 10%;
+      //transform: translateX(-50%) translateY(0);
+    }
+
+    .mat-icon {
+      color: #6362CE;
+      cursor: pointer;
+      &.activated {
+        opacity: 0.4;
+      }
+    }
+
+    .mat-icon.previous, .mat-icon.next {
+      @include set-icon-dim(56px);
+      //opacity: 0.4;
+    }
+    .mat-icon.play-pause {
+      @include set-icon-dim(128px);
+    }
+
+    &.navigating .mat-icon {
+      //opacity: 1.0;
+    }
+
+    &.navigating .mat-icon.previous,
+    &.navigating .mat-icon.next {
+      @include set-icon-dim(32px);
+    }
+
+    &.navigating .mat-icon.play-pause {
+      @include set-icon-dim(56px);
+    }
+    div.slider {
+      position: absolute;
+
+      left: 10%;
+      top: calc(100% + 4px);
+      width: 80%;
+      height: 4px;
+      background-color: transparent;
+      div.head {
+        background-color: #6362CE;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+      }
+    }
+  }
+
+  div.list {
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(20% + 64px);
+    height: calc(80% - 64px);
+    transition: opacity 0.5s;
+    &.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+}

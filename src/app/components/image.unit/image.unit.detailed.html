@@ -1,0 +1,25 @@
+<div class="current-image"
+[@imageState]="state"
+(@imageState.start)="onStartAnimation($event)"
+(@imageState.done)="onDoneAnimation($event)">
+  <img #imagePlaceholder />
+  <div class="playback-controls">
+    <mat-icon #btnPrevious class="previous" (click)="goToPrevious($event)">skip_previous</mat-icon>
+    <mat-icon #btnNext class="next" (click)="goToNext($event)">skip_next</mat-icon>
+  </div>
+</div>
+
+<div class="date-time">
+  <span class="time">{{getTime(currentImageItem.createdtime)}}
+    <span class="meridiem">{{getMeridiem(currentImageItem.createdtime)}}</span>
+  </span>
+  <span class="date">{{getDate(currentImageItem.createdtime)}}</span>
+</div>
+
+<div class="close" (click)="close($event)">
+  <mat-icon>close</mat-icon>
+</div>
+
+<div #imageList class="list hidden">
+  <image-list (selectedImage)="getSelectedImage($event)" [items]="imageListItems"></image-list>
+</div>
